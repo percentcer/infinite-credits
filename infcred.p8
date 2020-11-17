@@ -8,7 +8,6 @@ buf = {}
 
 function _draw()
 	cls()
-	
 	li=0
 	for l in all(buf) do
 		if(buf[li] and #buf[li]==0) then
@@ -31,15 +30,17 @@ end
 
 function _update()
 	scroll = (scroll + .5) % 8
-	if(scroll == 0) then
+	if(scroll==0)then
 		deli(buf,1)
-		addperson()
-	elseif rnd() < .01 then
-		add(buf,'')
-		ji = flr(rnd(8))+1
-		ni = flr(rnd(13))+1
-		add(buf,nouns[ni]..' '..jobs[ji])
-		addperson()
+		if(#buf<17)then
+			if(rnd() < .1)then
+				add(buf,'')
+				ni = flr(rnd(#nouns))+1
+				ji = flr(rnd(#jobs))+1
+				add(buf,nouns[ni]..' '..jobs[ji])
+			end
+			addperson()
+		end
 	end
 end
 
@@ -48,10 +49,10 @@ function hcntr(s)
 end
 
 function addperson()
-	 fni = flr(rnd(105))+1
-	 lni = flr(rnd(105))+1
-		comb = fnames[fni]..' '..fnames[lni]
-		add(buf,comb)
+	fni = flr(rnd(#fnames))+1
+	lni = flr(rnd(#fnames))+1
+	comb = fnames[fni]..' '..fnames[lni]
+	add(buf,comb)
 end
 -->8
 fnames = {
