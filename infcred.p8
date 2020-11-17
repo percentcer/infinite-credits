@@ -201,7 +201,7 @@ nouns = {
 'lighting',
 'dialogue',
 'chorus',
-'vertiae',
+'veritae',
 'production',
 'labor',
 'music',
